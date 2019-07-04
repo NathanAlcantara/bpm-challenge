@@ -19,9 +19,9 @@ export function login({ body }, res) {
             if (err) return res.status(500).send({ err });
 
             if (result.length > 0) {
-                const { id, password, level } = result[0];
+                const { id, password: pass, level } = result[0];
 
-                success = password === password;
+                success = password === pass;
 
                 output = Object.assign({ success }, { id, level });
             }

@@ -55,6 +55,7 @@ function addUsers() {
     const sql =
         `INSERT INTO ${USER_TABLE} (id, name, username, password, level)
         VALUES
+        ('${uuidv4()}', 'Admin', 'admin@senior.com.br', 'admin', 'ADMIN'),
         ('${uuidv4()}', 'Nathan', 'nathan.alcantara@senior.com.br', 'batata', 'REQUESTER'),
         ('${uuidv4()}', 'Gabriel', 'gabriel.fischer@senior.com.br', 'batata', 'ABDICATOR')`;
 

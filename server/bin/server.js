@@ -1,6 +1,6 @@
-const app = require('../src/app');
+import { server } from "../src/app";
 
-const port = normalizaPort(process.env.PORT || '3000');
+const port = normalizaPort(process.env.PORT || '1212');
 
 function normalizaPort(val) {
     const port = parseInt(val, 10);
@@ -13,6 +13,6 @@ function normalizaPort(val) {
     return false;
 }
 
-app.listen(port, function () {
-    console.log(`app listening on port ${port}`)
-})
+server.listen(port, () => {
+    console.log(`App listening on port ${port}`)
+});
