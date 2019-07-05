@@ -5,13 +5,13 @@ import { ViewsRoutingModule } from './views.routing';
 
 import { LoginComponent } from './login/login.component';
 import { ListComponent } from './list/list.component';
-import { AddComponent } from './add/add.component';
+import { CrudComponent } from './crud/crud.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     ListComponent,
-    AddComponent
+    CrudComponent
   ],
   imports: [
     SharedModule

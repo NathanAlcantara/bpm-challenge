@@ -10,7 +10,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getOne(id: string) {
-    return this.http.get(`${environment.baseURL}/users/get`, { headers: { id: id } }).pipe(defaultCatch());
+  findOne(id: string) {
+    return this.http.get(`${environment.baseURL}/users/get`, { headers: { id } }).pipe(defaultCatch());
   }
 }

@@ -24,8 +24,10 @@ function createRequisitionTable() {
         `CREATE TABLE IF NOT EXISTS ${REQUISITION_TABLE} (
             id VARCHAR(36) PRIMARY KEY NOT NULL,
             requester VARCHAR(180) NOT NULL,
+            abdicator VARCHAR(180) NOT NULL,
             description VARCHAR(360),
             price DOUBLE(16,2),
+            status VARCHAR(60) NOT NULL,
             createdDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );`;
 

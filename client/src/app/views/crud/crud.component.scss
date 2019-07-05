@@ -1,0 +1,19 @@
+.container {
+  margin: 5% auto;
+
+  mat-card-header {
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+
+  mat-card {
+    padding: 1.5rem;
+    width: 250px;
+  }
+
+  mat-card-footer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 15px;
+  }
+}

@@ -3,9 +3,9 @@ import { USER_TABLE } from "../core/helpers";
 
 /**
  * API to login on system
- * 
- * @param {String} username 
- * @param {String} password 
+ *
+ * @param {String} username
+ * @param {String} password
  */
 export function login({ body }, res) {
     const { username, password } = body;
@@ -22,6 +22,8 @@ export function login({ body }, res) {
                 const { id, password: pass, level } = result[0];
 
                 success = password === pass;
+
+                console.log(`Login successfull: ${success}`)
 
                 output = Object.assign({ success }, { id, level });
             }
