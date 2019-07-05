@@ -5,7 +5,7 @@ There a division of a server and client side where are two projects, one in Node
 
 ## Status
 
-Client In Progress - Login Done! - Users Views In progress
+Client Done o/
 <br>
 Server Done o/
 
@@ -24,4 +24,4 @@ To run project first start the server with `yarn start` then start client with `
 
 ## Observation
 
-Your base will be populate with three users, one where is a requester (`nathan.alcantara@senior.com.br`), the other is the users that will receive the requisition (`gabriel.fischer@senior.com.br`) both passwords are `senior123`, and the last is the admin (`admin@senior.com.br`, pass> `admin`) wich will see all requisition made in the system and their status 
+Your base will be populate with three users, one where is a requester (`nathan.alcantara@senior.com.br`), the other is the users that will receive the requisition (`gabriel.fischer@senior.com.br`) both passwords are `senior123`, and the last is the admin (`admin@senior.com.br`, pass> `admin`) wich will see all requisition made in the system and their status
