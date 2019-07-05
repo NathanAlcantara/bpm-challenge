@@ -1,0 +1,21 @@
+<div *ngIf="isError && !isEmpty" class="empty-state">
+  <div>
+    <mat-icon style="color: #B00020;">error_outline</mat-icon>
+  </div>
+  <div class="description">
+    <span>{{ firstTitleError }}</span>
+    <br>
+    <span>{{ secondTitleError }}</span>
+  </div>
+</div>
+
+<div *ngIf="isEmpty" class="empty-state">
+  <div>
+    <mat-icon>inbox</mat-icon>
+  </div>
+  <div class="description">
+    <span>{{ firstTitleEmpty }}</span>
+    <br>
+    <span>{{ secondTitleEmpty }}</span>
+  </div>
+</div>

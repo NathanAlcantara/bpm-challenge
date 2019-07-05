@@ -26,7 +26,7 @@ export function addRequisition({ body }, res) {
                 connection.query(sql, [uuidv4(), requester, abdicator, description, price, status], (err) => {
                     if (err) return res.status(500).send({ err });
 
-                    res.status(201).send({ success: "Request made successfully!" });
+                    res.status(201).send({ message: "Request made successfully!" });
                 });
             } else {
                 return res.status(500).send({ err: "There aren't nobody with permission to accept any requisition" });
@@ -73,17 +73,18 @@ export function getRequisition({ headers }, res) {
  * @param {String} requester
  */
 export function acceptRequisition({ body }, res) {
-    const { status = 'ACCEPT', abdicator, requester } = body;
+    const { id, status = 'ACCEPT', abdicator, requester } = body;
 
     if (abdicator && requester) {
         const sql = `
             UPDATE ${REQUISITION_TABLE}
             SET status = ?
-            WHERE abdicator = ?
+            WHERE id = ?
+            AND abdicator = ?
             AND requester = ?
         `
 
-        connection.query(sql, [status, abdicator, requester], (err) => {
+        connection.query(sql, [status, id, abdicator, requester], (err) => {
             if (err) return res.status(500).send({ err });
 
             res.status(200).send({ message: `Requisition accepted successfully` });
@@ -94,7 +95,7 @@ export function acceptRequisition({ body }, res) {
 }
 
 /**
- * List all requisitions of a requester
+ * List all requisitions of a requester waiting his approvation
  *
  * @param {String} requester
  */
@@ -102,7 +103,7 @@ export function listRequisitions({ headers }, res) {
     const { requester } = headers;
 
     if (requester) {
-        const sql = `SELECT * FROM ${REQUISITION_TABLE} WHERE requester = ?`;
+        const sql = `SELECT * FROM ${REQUISITION_TABLE} WHERE abdicator = ? AND status = 'WAITING'`;
 
         connection.query(sql, [requester], (err, result) => {
             if (err) return res.status(500).send({ err });

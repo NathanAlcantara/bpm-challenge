@@ -3,3 +3,8 @@ export enum UserLevel {
   REQUESTER = 'REQUESTER',
   ABDICATOR = 'ABDICATOR'
 }
+
+export enum RequisitionStatus {
+  ACCEPT = 'ACCEPT',
+  WAITING = 'WAITING'
+}

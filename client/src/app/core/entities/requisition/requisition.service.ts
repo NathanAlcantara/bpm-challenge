@@ -18,7 +18,7 @@ export class RequisitionService {
   }
 
   findAllByRequester(requester: string) {
-    return this.http.get(`${this.baseURLEntity}/all`, { headers: { requester } }).pipe(defaultCatch());
+    return this.http.get(`${this.baseURLEntity}/list`, { headers: { requester } }).pipe(defaultCatch());
   }
 
   findOne(id: string) {
@@ -29,7 +29,7 @@ export class RequisitionService {
     return this.http.post(`${this.baseURLEntity}/add`, requisition).pipe(defaultCatch());
   }
 
-  accept(requester: string, abdicator: string) {
-    return this.http.post(`${this.baseURLEntity}/accept`, { requester, abdicator }).pipe(defaultCatch());
+  accept(id: string, requester: string, abdicator: string) {
+    return this.http.post(`${this.baseURLEntity}/accept`, { id, requester, abdicator }).pipe(defaultCatch());
   }
 }

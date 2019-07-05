@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { BaseFormComponent } from '~core/utils/base-list.component';
+import { BaseFormComponent } from '~core/utils/base-form.component';
 import { AuthService } from '~core/auth/auth.service';
 import { Router } from '@angular/router';
 import { toast } from '~core/utils/helpers';
@@ -51,7 +51,7 @@ export class LoginComponent extends BaseFormComponent implements OnInit {
             if (level === UserLevel.REQUESTER) {
               route = 'requisition/add';
             } else if (level === UserLevel.ABDICATOR) {
-              route = 'requisition/view';
+              route = 'requisition/list';
             } else {
               route = 'requisition/list';
             }

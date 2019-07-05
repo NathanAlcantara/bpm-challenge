@@ -5,6 +5,7 @@ import { CrudComponent } from './crud/crud.component';
 import { ListComponent } from './list/list.component';
 import { UserService } from '~core/entities/user/user.service';
 import { RequisitionService } from '~core/entities/requisition/requisition.service';
+import { UserLevel } from '~core/enums';
 
 @Injectable()
 export class UserResolver implements Resolve<any> {
@@ -59,7 +60,7 @@ export const routes: Routes = [
         component: CrudComponent
       },
       {
-        path: 'view:id',
+        path: 'view/:id',
         component: CrudComponent,
         resolve: {
           entity: RequisitionEntityResolver

@@ -6,6 +6,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './header/header.component';
+import { EmptyStateComponent } from './components/empty-state/empty-state.component';
 
 @NgModule({
   imports: [
@@ -21,10 +22,12 @@ import { HeaderComponent } from './header/header.component';
     HeaderComponent,
     MaterialModule,
     ReactiveFormsModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    EmptyStateComponent
   ],
   declarations: [
     HeaderComponent,
+    EmptyStateComponent,
   ],
 })
 export class SharedModule { }

@@ -1,28 +1,36 @@
-import { FormBuilder } from '@angular/forms';
 import { BaseComponent } from './base.component';
 
-export class BaseFormComponent extends BaseComponent {
+export interface ListParams {
+  search?: string;
+  page: number;
+  size: number;
+  sort: number;
+  order: string;
+}
 
-  constructor(protected formBuilder: FormBuilder) {
+export interface GridColumns {
+  field: string;
+  label: string;
+  sorted?: boolean;
+  converter?: (any) => void;
+}
+
+export interface Action {
+  label: string;
+  action: (any?) => void;
+}
+
+export class BaseListComponent extends BaseComponent {
+
+  gridColumns: GridColumns[];
+  gridData: any[];
+  action: Action;
+  isLoading: boolean;
+  hasError: boolean;
+
+  columnsLabel: string[] = [];
+
+  constructor() {
     super();
-  }
-
-  getErrorMessage = (validation: string, number?: number): any => {
-    const errorMessages = {
-      required: 'Campo obrigatório.',
-      email: 'Tem que ser um e-mail',
-      min: `Não é permitido números abaixo de ${number}`,
-      minLength: `Aqui vai no minímo ${number} caracteres`,
-      maxLength: `Aqui vai no máximo ${number} caracteres`,
-      imageRequired: 'Imagem obrigatória',
-      actualSize: `Tamanho atual do arquivo: ${number}`,
-      maxSize: `Tamanho máximo permitido: ${number}`,
-    };
-
-    return errorMessages[validation];
-  };
-
-  public createForm(controls: any) {
-    return this.formBuilder.group(controls);
   }
 }

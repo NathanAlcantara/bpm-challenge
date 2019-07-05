@@ -1,3 +1,53 @@
-<p>
-  list works!
-</p>
+<div class="container centralize">
+  <div style="width: 75%; background: white">
+
+      <n-empty-state
+        *ngIf="!isLoading"
+        [isEmpty]="gridData && gridData?.length === 0"
+        [isError]="hasError"
+        firstTitleEmpty="Não encontramos nenhum registro,"
+        firstTitleError="Ocorreu um erro inesperado,"
+        secondTitleEmpty="por favor cadastre um novo produto."
+        secondTitleError="por favor contate o administrador."
+      ></n-empty-state>
+
+    <div class="mat-elevation-z8" *ngIf="!isLoading ? (!hasError && gridData?.length !== 0) : true">
+      <table mat-table matSort matSortActive="name" matSortDirection="desc" matSortDisableClear="true"
+        [dataSource]="gridData">
+
+        <ng-container *ngFor="let column of specialGrids" [matColumnDef]="column.field">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>
+            {{column.label}}
+          </th>
+          <td *matCellDef="let row" mat-cell>
+            {{ column.field === 'requesterName' ? row?.requester?.name : row?.abdicator?.name }}
+          </td>
+        </ng-container>
+
+        <ng-container *ngFor="let column of gridColumns" [matColumnDef]="column.field">
+          <th *matHeaderCellDef mat-header-cell mat-sort-header>
+            {{column.label}}
+          </th>
+          <td *matCellDef="let row" mat-cell>
+            {{column.converter ? column.converter(row[column.field]) : row[column.field]}}
+          </td>
+        </ng-container>
+
+        <ng-container *ngIf="!isAdmin" matColumnDef="actions">
+          <th *matHeaderCellDef mat-header-cell> Ações </th>
+          <td *matCellDef="let row" mat-cell>
+            <button (click)="viewRequisition(row.id)" mat-raised-button> Visualizar </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsLabel"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsLabel;"></tr>
+      </table>
+
+      <div *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
+    </div>
+  </div>
+</div>

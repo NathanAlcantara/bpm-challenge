@@ -22,6 +22,13 @@ export function isValid(value: any) {
   }
 }
 
+export function converterCurrency(value: number) {
+  if (value) {
+    value = Number(value);
+    return value.toLocaleString('pt-BR', { minimumFractionDigits: 2, style: 'currency', currency: 'BRL' });
+  }
+}
+
 export const toast = Swal.mixin({
   toast: true,
   position: 'top-end',
